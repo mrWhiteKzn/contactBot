@@ -24,7 +24,7 @@ public class Config {
         RequestConfig requestConfig = RequestConfig.custom().setProxy(httpHost).setAuthenticationEnabled(false).build();
         botOptions.setRequestConfig(requestConfig);
 
-        Bot bot = new Bot(Constants.BOT_TOKEN, Constants.BOT_TOKEN, botOptions);
+        Bot bot = new Bot(Constants.BOT_TOKEN, Constants.BOT_NAME, botOptions);
         try {
             botsApi.registerBot(bot);
         } catch (TelegramApiException e) {

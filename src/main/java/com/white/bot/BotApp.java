@@ -9,6 +9,5 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 public class BotApp {
     public static void main(String[] args) {
         SpringApplication.run(BotApp.class, args);
-
     }
 }
