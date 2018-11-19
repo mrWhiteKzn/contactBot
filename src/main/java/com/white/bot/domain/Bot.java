@@ -47,6 +47,11 @@ public class Bot extends AbilityBot {
                         sendMsg(message, ex.getMessage());
                     }
                     break;
+                case "get":
+                    Contact resultContact = botController.find(command);
+                    String contactMessage = (resultContact == null) ? command.getName() + " " + NOT_FOUND_MESSAGE : resultContact.toString();
+                    sendMsg(message, contactMessage);
+                    break;
                 case "edit":
                     botController.update(command);
                     sendMsg(message, command.getName() + " " + UPDATE_MESSAGE);
@@ -56,13 +61,7 @@ public class Bot extends AbilityBot {
                     sendMsg(message, command.getName() + " " + DELETE_MESSAGE);
                     break;
                 default:
-                    try {
-                        Contact resultContact = botController.find(command);
-                        String contactMessage = (resultContact == null) ? command.getName() + " " + NOT_FOUND_MESSAGE : resultContact.toString();
-                        sendMsg(message, contactMessage);
-                    } catch (Exception ex) {
-                        sendMsg(message, ERROR_TYPE_COMMAND);
-                    }
+                    sendMsg(message, ERROR_TYPE_COMMAND);
             }
         }
     }
